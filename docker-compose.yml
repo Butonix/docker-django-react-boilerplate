@@ -1,0 +1,24 @@
+version: '3'
+services:
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        image: proj3ctname-frontend
+        restart: always
+        ports:
+            - 3000:3000
+        volumes:
+            - ./frontend/source:/source
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        image: proj3ctname-backend
+        restart: always
+        ports:
+            - 8000:8000
+        environment:
+            PYTHONUNBUFFERED: 0
+        volumes:
+            - ./backend/source:/source
